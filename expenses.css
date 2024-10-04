@@ -1,0 +1,136 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    width: 97vw;
+    display: flex;
+    margin-top: 60px;
+    justify-content: center;
+    background-image: url("cash5.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.main{
+    width: 50%;
+    /* background-color: rgb(186, 182, 182); */
+    padding-left: 25px;
+    padding-right: 25px;
+    
+}
+.heading{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+.searching input{
+    width: 180px;
+    height: 40px;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: none;
+    outline: 1px;
+    font-family: 'monospace';
+    font-size: 17px;
+    margin-left: 15px;
+    font-size: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 100);
+}
+.expenses{
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-bottom: 10px;
+}
+.adding{
+    display: flex;
+}
+.add input{
+    width: 250px;
+    height: 40px;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: none;
+    outline: 1px;
+    font-family: 'monospace';
+    font-size: 17px;
+    margin-left: 15px;
+    font-size: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 100);
+}
+.cost input{
+    margin-left: 15px;
+    width: 130px;
+    height: 40px;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: none;
+    outline: 1px;
+    font-family: 'monospace';
+    font-size: 17px;
+    margin-left: 15px;
+    font-size: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 100);
+    
+}
+.adding button{
+    margin-left: 15px;
+    height: 40px;
+    width: 80px;
+    background-color: rgb(8, 8, 126);
+    border: none;
+    outline: 1px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 100);
+    color: white;
+
+}
+#clear1{
+    width: 70px;
+    height: 35px;
+    margin-left: 15px;
+    margin-top: 4px;
+    background-color: rgb(8, 8, 126);
+    border: none;
+    outline: 1px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 100);
+    font-size: 13px;
+    color: white;
+}
+/* js tags styling */
+.divTag{
+    height: 47px;
+    width: 500px;
+    background-color: rgb(244, 247, 246);
+    margin-bottom: 7px;
+}
+.subDiv{
+    width: 325px;
+    /* background-color: white; */
+    padding: 10px;
+    justify-content: space-between;
+}
+.firstDiv{
+    margin-left: 10px;
+    font-size: 20px;
+}
+.secondDiv{
+    font-size: 20px;
+}
+.deleteExpenses, .edit{
+    width: 70px;
+    height: 35px;
+    margin-left: 15px;
+    margin-top: 4px;
+    background-color: hsl(150, 100%, 50%);
+    border: none;
+    outline: 1px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 100);
+}
+.adding.add{
+    width: 10px;
+}

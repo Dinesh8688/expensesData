@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+    <link rel = 'stylesheet' href = "expenses.css">
+</head>
+<body>
+    <div class = 'main'>
+        <div class = "heading"><h2><span style="color: rgb(8, 8, 126)">GIVE</span> <span style="color: white">GAVE </span><span style="color: rgb(8, 8, 126)">GIVEN</span></h2></div>
+        <div class = "searching"><input type = "text" placeholder="Search" class = "searchInput"></div>
+        <div class = "expenses"></div>
+        <form class = "adding">
+            <div class = "add">
+                <input id = "addInput" type = "text" placeholder="Add">
+            </div>
+            <div class = 'cost'>
+                <input id = "cost" type = "text" placeholder = "Cost" pattern="\d*">
+            </div>
+            <button>ADD</button>
+        </form>
+        <div class = 'finalButton'>
+            <button id = "clear1">CLEAR</button>
+        </div>
+        
+        <script src = "expensesScript.js"></script>
+    </div>
+</body>
+</html>
