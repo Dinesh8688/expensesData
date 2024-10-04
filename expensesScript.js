@@ -32,7 +32,7 @@ const renderExpenses = function(expenses,filters)
 
     document.querySelector(".expenses").innerHTML = '';
 
-    filteredExpenses.forEach((e,index)=>{
+    expenses.forEach((e,index)=>{
 
         const firstDiv = document.createElement('div')
         firstDiv.className = 'firstDiv'
@@ -66,7 +66,7 @@ const renderExpenses = function(expenses,filters)
         document.querySelector(".expenses").appendChild(divTag)
 
         deleteExpenses.addEventListener('click',function(){
-            expenses.splice(index,1);
+            expenses.splice(index);
             localStorage.setItem('expenses',JSON.stringify(expenses))
             renderExpenses(expenses,filters)
         })
@@ -86,6 +86,7 @@ document.querySelector(".searching").addEventListener('input',function(e){
 document.getElementById("clear1").addEventListener('click',()=>{
     expenses.length = 0
     document.querySelector('.expenses').innerHTML = ''
+    localStorage.setItem('expenses',JSON.stringify(expenses))
 })
 
     
