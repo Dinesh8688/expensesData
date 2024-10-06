@@ -9,17 +9,12 @@ body{
     display: flex;
     margin-top: 60px;
     justify-content: center;
-    background-image: url("cash5.jpeg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: rgb(233, 216, 233);
 }
 .main{
     width: 50%;
-    /* background-color: rgb(186, 182, 182); */
     padding-left: 25px;
     padding-right: 25px;
-    
 }
 .heading{
     display: flex;
@@ -40,6 +35,12 @@ body{
     margin-left: 15px;
     font-size: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 100);
+}
+.matter{
+    margin-left:15px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: rgb(9, 9, 161);
 }
 .expenses{
     display: flex;
@@ -90,16 +91,17 @@ body{
 
 }
 #clear1{
-    width: 70px;
-    height: 35px;
-    margin-left: 15px;
+    width: 270px;
+    height: 40px;
+    margin-left: 150px;
     margin-top: 4px;
     background-color: rgb(8, 8, 126);
     border: none;
     outline: 1px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 100);
-    font-size: 13px;
+    font-size: 15px;
     color: white;
+    border-radius: 5px;
 }
 /* js tags styling */
 .divTag{
@@ -126,10 +128,12 @@ body{
     height: 35px;
     margin-left: 15px;
     margin-top: 4px;
-    background-color: hsl(150, 100%, 50%);
+    background-color: black;
     border: none;
     outline: 1px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 100);
+    color: black;
+    border-radius: 5px;
 }
 .adding.add{
     width: 10px;

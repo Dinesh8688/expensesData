@@ -1,4 +1,4 @@
-let expenses = JSON.parse(localStorage.getItem('expenses')) || []
+let expenses = JSON.parse(localStorage.getItem('expenses'))||[]
 
 document.querySelector(".adding").addEventListener('submit',function(e){
     e.preventDefault()
@@ -29,10 +29,17 @@ const renderExpenses = function(expenses,filters)
         const searchTex = e.title.toLowerCase().includes(filters.searchText.toLowerCase())
         return searchTex
     })
+    document.querySelector('.matter').innerHTML = ''
+    if(expenses.length==0)
+    {
+        document.querySelector('.matter').append('No Items Are Added')
+    }
+    
+    localStorage.setItem('expenses',JSON.stringify(expenses))
 
     document.querySelector(".expenses").innerHTML = '';
 
-    expenses.forEach((e,index)=>{
+    filteredExpenses.forEach((e,index)=>{
 
         const firstDiv = document.createElement('div')
         firstDiv.className = 'firstDiv'
@@ -49,14 +56,29 @@ const renderExpenses = function(expenses,filters)
         const divTag = document.createElement('div')
         divTag.className = 'divTag'
         divTag.style.display = 'flex'
+        divTag.style.borderRadius = '5px'
 
         const deleteExpenses = document.createElement('button')
         deleteExpenses.className = 'deleteExpenses'
         deleteExpenses.textContent = 'DELETE'
-
+        deleteExpenses.style.backgroundColor = 'rgb(8, 8, 126)'
+        deleteExpenses.style.color = 'white'
         const edit = document.createElement('button')
         edit.className = 'edit'
         edit.textContent = 'EDIT'
+        
+        edit.style.backgroundColor = 'white'
+
+        if(index%2==1)
+        {
+            divTag.style.backgroundColor = 'rgb(8, 2, 55)'
+            firstDiv.style.color = 'white'
+            secondDiv.style.color = 'white'
+            deleteExpenses.style.color = 'black'
+            edit.style.color = 'white'
+            deleteExpenses.style.backgroundColor = 'white'
+            edit.style.backgroundColor = 'rgb(8, 8, 126)'
+        }
 
         subDiv.appendChild(firstDiv)
         subDiv.appendChild(secondDiv)
@@ -66,13 +88,9 @@ const renderExpenses = function(expenses,filters)
         document.querySelector(".expenses").appendChild(divTag)
 
         deleteExpenses.addEventListener('click',function(){
-            expenses.splice(index);
+            expenses.splice(index,1);
             localStorage.setItem('expenses',JSON.stringify(expenses))
             renderExpenses(expenses,filters)
-        })
-
-        edit.addEventListener('click',function(){
-            
         })
     })
 }
