@@ -34,7 +34,7 @@ const renderExpenses = function(expenses,filters)
     {
         document.querySelector('.matter').append('No Items Are Added')
     }
-    
+
     localStorage.setItem('expenses',JSON.stringify(expenses))
 
     document.querySelector(".expenses").innerHTML = '';
@@ -105,6 +105,7 @@ document.getElementById("clear1").addEventListener('click',()=>{
     expenses.length = 0
     document.querySelector('.expenses').innerHTML = ''
     localStorage.setItem('expenses',JSON.stringify(expenses))
+    renderExpenses(expenses,filters)
 })
 
     
