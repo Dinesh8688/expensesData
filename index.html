@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expenses</title>
     <link rel = 'stylesheet' href = "expenses.css">
 </head>
@@ -26,8 +24,18 @@
         <div class = 'finalButton'>
             <button id = "clear1">CLEAR</button>
         </div>
-        
-        <script src = "expensesScript.js"></script>
+        <div class = 'tracker'>
+            <div class = 'totalAmount'>
+                <h3>Total Budget:</h3>
+                <p class = 'p1Tag'></p>
+            </div>
+            <div class = 'remainingAmount'>
+                <h3>Amount Used:</h3>
+                <p class = 'p2Tag'></p>
+            </div>
+        </div>
     </div>
+    <div class = 'editPage'></div>
+    <script src = "expensesScript.js"></script>
 </body>
 </html>

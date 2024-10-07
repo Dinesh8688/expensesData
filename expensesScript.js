@@ -1,19 +1,35 @@
 let expenses = JSON.parse(localStorage.getItem('expenses'))||[]
 
+let TotalAmount = 1000
+document.querySelector('.p1Tag').textContent = TotalAmount
+
+let ItemSum = parseFloat(localStorage.getItem('UsedAmount')) || 0;
+document.querySelector('.p2Tag').textContent = ItemSum
+
 document.querySelector(".adding").addEventListener('submit',function(e){
     e.preventDefault()
     const item = document.querySelector('#addInput').value
     const price = document.querySelector('#cost').value
-    if((item!='')&&(price!=''))
+
+    if((item!=='')&&(price!=''))
     {
-        expenses.push({
-            title : item,
-            cost : price
-        })
-        localStorage.setItem('expenses',JSON.stringify(expenses))
+        if(parseFloat(price)>0)
+        {
+            ItemSum=ItemSum+parseFloat(price)
+            
+            
+            if(ItemSum<=TotalAmount)
+            {
+                document.querySelector('.p2Tag').textContent = ItemSum
+                localStorage.setItem('UsedAmount',ItemSum)
+                expenses.push({
+                title : item,
+                cost : price
+                }) 
+            } 
+        }
     }
-    
-    console.log(expenses)
+    localStorage.setItem('expenses',JSON.stringify(expenses))
     renderExpenses(expenses,filters)
     document.querySelector('#addInput').value=''
     document.querySelector('#cost').value=''
@@ -25,6 +41,7 @@ const filters = {
 
 const renderExpenses = function(expenses,filters)
 {
+    
     const filteredExpenses = expenses.filter(function(e){
         const searchTex = e.title.toLowerCase().includes(filters.searchText.toLowerCase())
         return searchTex
@@ -63,10 +80,10 @@ const renderExpenses = function(expenses,filters)
         deleteExpenses.textContent = 'DELETE'
         deleteExpenses.style.backgroundColor = 'rgb(8, 8, 126)'
         deleteExpenses.style.color = 'white'
+        
         const edit = document.createElement('button')
         edit.className = 'edit'
         edit.textContent = 'EDIT'
-        
         edit.style.backgroundColor = 'white'
 
         if(index%2==1)
@@ -88,9 +105,48 @@ const renderExpenses = function(expenses,filters)
         document.querySelector(".expenses").appendChild(divTag)
 
         deleteExpenses.addEventListener('click',function(){
+            let costValue = parseFloat(expenses[index].cost)
+            ItemSum = ItemSum-costValue
             expenses.splice(index,1);
+            localStorage.setItem('UsedAmount',ItemSum)
             localStorage.setItem('expenses',JSON.stringify(expenses))
+            document.querySelector('.p2Tag').textContent = ItemSum;
             renderExpenses(expenses,filters)
+        })
+
+       edit.addEventListener('click',function(e){
+
+            const editPage = document.querySelector('.editPage')
+            editPage.innerHTML = ''
+            editPage.className = 'editPage'
+            
+            editPage.style.marginTop = '120px'
+        
+            const editInput = document.createElement('input')
+            editInput.className = 'editInput'
+            editInput.placeholder = 'NewCost'
+            editInput.style.borderRadius = '5px'
+
+            const saveButton = document.createElement('button')
+            saveButton.className = 'saveButton'
+            saveButton.textContent = 'Save'
+            saveButton.style.borderRadius = '5px'
+        
+            editPage.appendChild(editInput)
+            editPage.appendChild(saveButton)
+
+            saveButton.addEventListener('click',function(e){
+                const newCost = editInput.value;
+                if(newCost!==''&& /^\d*$/.test(newCost))
+                {
+                    expenses[index].cost = newCost
+                    localStorage.setItem('expenses',JSON.stringify(expenses))
+                    editPage.innerHTML = ''
+                    document.querySelector('.main').style.marginLeft = '250px'
+                    renderExpenses(expenses,filters)
+                    
+                }
+            })
         })
     })
 }
@@ -108,6 +164,6 @@ document.getElementById("clear1").addEventListener('click',()=>{
     renderExpenses(expenses,filters)
 })
 
-    
+
 
  
