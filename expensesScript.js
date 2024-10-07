@@ -17,7 +17,6 @@ document.querySelector(".adding").addEventListener('submit',function(e){
         {
             ItemSum=ItemSum+parseFloat(price)
             
-            
             if(ItemSum<=TotalAmount)
             {
                 document.querySelector('.p2Tag').textContent = ItemSum
@@ -136,15 +135,23 @@ const renderExpenses = function(expenses,filters)
             editPage.appendChild(saveButton)
 
             saveButton.addEventListener('click',function(e){
-                const newCost = editInput.value;
-                if(newCost!==''&& /^\d*$/.test(newCost))
+                const newCost = parseFloat(editInput.value);
+                const previousValue = parseFloat(expenses[index].cost)
+
+                if(!isNaN(newCost)&& newCost>0)
                 {
-                    expenses[index].cost = newCost
-                    localStorage.setItem('expenses',JSON.stringify(expenses))
-                    editPage.innerHTML = ''
-                    document.querySelector('.main').style.marginLeft = '250px'
-                    renderExpenses(expenses,filters)
-                    
+                    ItemSum = ItemSum-previousValue
+                    ItemSum+=newCost
+                    if(ItemSum<=TotalAmount)
+                    {
+                        expenses[index].cost = newCost
+                        localStorage.setItem('expenses',JSON.stringify(expenses))
+                        localStorage.setItem('UsedItem',ItemSum)
+                        document.querySelector('.p2Tag').textContent = ItemSum;
+                        editPage.innerHTML = ''
+                        document.querySelector('.main').style.marginLeft = '250px'
+                        renderExpenses(expenses,filters)
+                    }
                 }
             })
         })
