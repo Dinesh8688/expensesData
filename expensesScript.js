@@ -167,6 +167,9 @@ document.querySelector(".searching").addEventListener('input',function(e){
 document.getElementById("clear1").addEventListener('click',()=>{
     expenses.length = 0
     document.querySelector('.expenses').innerHTML = ''
+    ItemSum = 0
+    document.querySelector('.p2Tag').textContent = ItemSum
+    localStorage.setItem('UsedItem',ItemSum);
     localStorage.setItem('expenses',JSON.stringify(expenses))
     renderExpenses(expenses,filters)
 })
