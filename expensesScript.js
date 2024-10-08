@@ -115,7 +115,7 @@ const renderExpenses = function(expenses,filters)
 
        edit.addEventListener('click',function(e){
 
-            const editPage = document.querySelector('.editPage')
+            editPage = document.querySelector('.editPage')
             editPage.innerHTML = ''
             editPage.className = 'editPage'
             
@@ -168,8 +168,10 @@ document.getElementById("clear1").addEventListener('click',()=>{
     expenses.length = 0
     document.querySelector('.expenses').innerHTML = ''
     ItemSum = 0
+    document.querySelector('.editPage').innerHTML = ''
+    document.querySelector('.main').style.marginLeft = '250px'
+    localStorage.setItem('UsedAmount',ItemSum);
     document.querySelector('.p2Tag').textContent = ItemSum
-    localStorage.setItem('UsedItem',ItemSum);
     localStorage.setItem('expenses',JSON.stringify(expenses))
     renderExpenses(expenses,filters)
 })
