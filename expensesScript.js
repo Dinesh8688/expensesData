@@ -103,16 +103,6 @@ const renderExpenses = function(expenses,filters)
         divTag.appendChild(edit)
         document.querySelector(".expenses").appendChild(divTag)
 
-        deleteExpenses.addEventListener('click',function(){
-            let costValue = parseFloat(expenses[index].cost)
-            ItemSum = ItemSum-costValue
-            expenses.splice(index,1);
-            localStorage.setItem('UsedAmount',ItemSum)
-            localStorage.setItem('expenses',JSON.stringify(expenses))
-            document.querySelector('.p2Tag').textContent = ItemSum;
-            renderExpenses(expenses,filters)
-        })
-
        edit.addEventListener('click',function(e){
 
             editPage = document.querySelector('.editPage')
@@ -154,6 +144,17 @@ const renderExpenses = function(expenses,filters)
                     }
                 }
             })
+        })
+        deleteExpenses.addEventListener('click',function(){
+            let costValue = parseFloat(expenses[index].cost)
+            ItemSum = ItemSum-costValue
+            expenses.splice(index,1);
+            editPage.innerHTML = ''
+            document.querySelector('.main').style.marginLeft = '250px'
+            localStorage.setItem('UsedAmount',ItemSum)
+            localStorage.setItem('expenses',JSON.stringify(expenses))
+            document.querySelector('.p2Tag').textContent = ItemSum;
+            renderExpenses(expenses,filters)
         })
     })
 }
